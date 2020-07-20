@@ -1,0 +1,10 @@
+<?php
+require('connection.inc.php');
+if(!isset($_SESSION['User_username'])){
+    header('location:checkoutlogin.php');
+    die();
+}else{
+    header('location:checkout.php');
+    die();
+}
+?>
