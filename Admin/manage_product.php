@@ -89,9 +89,9 @@ if(isset($_POST['submit'])){
             mysqli_query($conn,"insert into product(categories_id,name,mrp,price,qty,image,best_seller,short_desc,description,meta_title,meta_desc,meta_keyword,status) 
             values('$categories_id','$name','$mrp','$price','$qty','$image','$best_seller','$short_desc','$description','$meta_title','$meta_desc','$meta_keyword','1')");
          }
+         header('location:product.php');
+         die();
       }
-        header('location:product.php');
-        die();
    }
 
 ?>

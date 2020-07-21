@@ -42,7 +42,7 @@ if($mypage=="product_detail.php"){
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <link rel="stylesh eet" href="mystyle.css">
+    <link rel="stylesheet" href="mystyle.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/core.css">

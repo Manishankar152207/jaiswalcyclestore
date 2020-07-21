@@ -13,6 +13,9 @@ if(isset($_POST['submit'])){
    $update_order_status=$_POST['update_order_status'];
    mysqli_query($conn,"update product_order set order_status='$update_order_status' where id='$order_id'");
 }
+$coupon_detail=mysqli_fetch_assoc(mysqli_query($conn,"select coupon_value,coupon_code from product_order where id=$order_id"));
+$coupon_value=$coupon_detail['coupon_value'];
+$coupon_code=$coupon_detail['coupon_code'];
 ?>
 <div class="content pb-0">
    <div class="orders">
@@ -35,9 +38,7 @@ if(isset($_POST['submit'])){
                            </tr>
                         </thead>
                         <tbody><?php 
-                        $res=mysqli_query($conn,"select distinct(order_detail.id),order_detail.*,product.name,
-                        product.image,product_order.address,product_order.city,product_order.pincode from order_detail,product,product_order where order_detail.order_id=$order_id 
-                        and product.id=order_detail.product_id");
+                        $res=mysqli_query($conn,"select distinct(order_detail.id) ,order_detail.*,product.name,product.image,product_order.address,product_order.city,product_order.pincode from order_detail,product ,product_order where order_detail.order_id='$order_id' and order_detail.product_id=product.id GROUP by order_detail.id");
                         $total_price=0;
                         while($row=mysqli_fetch_assoc($res)){
                            $address=$row['address'];
@@ -54,11 +55,16 @@ if(isset($_POST['submit'])){
                               <td class="product-name"><a href="#"><?php echo $row['qty'];?></a></td>
                               <td class="product-name"><a href="#"><?php echo $row['qty']*$row['price'];?></a></td>
                            </tr>
-                           <?php } ?>
+                           <?php } if($coupon_value!='0'){?>
+                           <tr>
+                              <td colspan="3"></td>
+                              <td class="product-name"><a href="#">Coupon Price</a></td>
+                              <td class="product-name"><a href="#"><?php echo $coupon_value."($coupon_code)";?></a></td>
+                           </tr><?php } ?>
                            <tr>
                               <td colspan="3"></td>
                               <td class="product-name"><a href="#">Total Price</a></td>
-                              <td class="product-name"><a href="#"><?php echo $total_price?></a></td>
+                              <td class="product-name"><a href="#"><?php echo $total_price-$coupon_value?></a></td>
                            </tr>
                         </tbody>
                      </table>

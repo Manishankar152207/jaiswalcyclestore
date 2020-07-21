@@ -40,6 +40,9 @@ if(!isset($_SESSION['Admin_Login']) && !isset($_SESSION['Admin_username']) && !i
                      <a href="order_master.php" >Order Master</a>
                   </li>
                   <li class="menu-item-has-children dropdown">
+                     <a href="coupon_master.php" >Coupon Master</a>
+                  </li>
+                  <li class="menu-item-has-children dropdown">
                      <a href="users.php" >User Master</a>
                   </li>
                   <li class="menu-item-has-children dropdown">
@@ -53,7 +56,7 @@ if(!isset($_SESSION['Admin_Login']) && !isset($_SESSION['Admin_username']) && !i
          <header id="header" class="header">
             <div class="top-left">
                <div class="navbar-header">
-                  <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Logo"></a>
+                  <a class="navbar-brand" href="dashboard.php" style="font-weight:bold;">Jaiswal Cycle Store</a>
                   <a class="navbar-brand hidden" href="index.html"><img src="images/logo2.png" alt="Logo"></a>
                   <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                </div>

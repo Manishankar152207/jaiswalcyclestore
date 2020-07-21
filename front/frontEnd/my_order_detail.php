@@ -1,6 +1,8 @@
 <?php
 require('top.php');
 $order_id=get_safe_value($conn,$_GET['id']);
+$coupon_detail=mysqli_fetch_assoc(mysqli_query($conn,"select coupon_value from product_order where id=$order_id"));
+$coupon_value=$coupon_detail['coupon_value'];
 ?>
 <!-- wishlist-area start -->
 <div class="wishlist-area ptb--100 bg__white">
@@ -36,12 +38,19 @@ $order_id=get_safe_value($conn,$_GET['id']);
                                                 <td class="product-name"><a href="#"><?php echo $row['qty'];?></a></td>
                                                 <td class="product-name"><a href="#"><?php echo $row['qty']*$row['price'];?></a></td>
                                             </tr>
+                                            <?php }  
+                                            if($coupon_value!='0'){
+                                            ?>
+                                                <tr>
+                                                <td colspan="3"></td>
+                                                <td class="product-name"><a href="#">Coupon Price</a></td>
+                                                <td class="product-name"><a href="#"><?php echo $coupon_value?></a></td>
+                                            </tr>
                                             <?php } ?>
                                             <tr>
                                                 <td colspan="3"></td>
                                                 <td class="product-name"><a href="#">Total Price</a></td>
-                                                <td class="product-name"><a href="#"><?php echo $total_price?></a></td>
-                                            </tr>
+                                                <td class="product-name"><a href="#"><?php echo $total_price-$coupon_value?></td>
                                         </tbody>
                                     </table>
                                 </div>  

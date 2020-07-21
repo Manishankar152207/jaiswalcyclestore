@@ -28,9 +28,21 @@ if(isset($_POST['submit'])){
     $add_on=date('Y-m-d h:i:s');
 
     $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
-
-    mysqli_query($conn,"insert into product_order(user_id,address,city,pincode,payment_type,total_price,payment_status,order_status,added_on,txnid)
-     values('$user_id','$add','$city','$pin','$payment_type','$total_price','$payment_status','$order_status','$add_on','$txnid')");
+    if(isset($_SESSION['COUPON_ID'])){
+		$coupon_id=$_SESSION['COUPON_ID'];
+		$coupon_code=$_SESSION['COUPON_CODE'];
+		$coupon_value=$_SESSION['COUPON_VALUE'];
+		$total_price=$total_price-$coupon_value;
+		unset($_SESSION['COUPON_ID']);
+		unset($_SESSION['COUPON_CODE']);
+		unset($_SESSION['COUPON_VALUE']);
+	}else{
+		$coupon_id='';
+		$coupon_code='';
+		$coupon_value='';	
+	}	
+    mysqli_query($conn,"insert into product_order(user_id,address,city,pincode,payment_type,total_price,payment_status,order_status,added_on,txnid,coupon_id,coupon_code,coupon_value)
+     values('$user_id','$add','$city','$pin','$payment_type','$total_price','$payment_status','$order_status','$add_on','$txnid','$coupon_id','$coupon_code','$coupon_value')");
 
      $order_id=mysqli_insert_id($conn);
     foreach($_SESSION['cart'] as $key=>$val){
@@ -191,10 +203,20 @@ if(isset($_POST['submit'])){
                                 </div>
                             <?php } ?>
                             </div>
-                            <div class="ordre-details__total">
-                                <h5>Order total</h5>
-                                <span class="price"><?php echo $cart_total; ?></span>
+                            <div class="ordre-details__total" id="coupon_box" style="display:none;">
+                                <h5>Coupon Value</h5>
+                                <span class="price" id="coupon_price"></span>
                             </div>
+                            <div class="ordre-details__total" >
+                                <h5>Order total</h5>
+                                <span class="price" id="order_total_price"><?php echo $cart_total; ?></span>
+                            </div>
+                            <div class="ordre-details__total">
+                                <div class="single-input">
+                                    <input type="textbox" id="coupon" name="coupon" placeholder="Coupon here...">
+                                </div><button type="submit" name="apply" id="apply" class="fv-btn" value="apply" onclick="set_coupon()">Apply</button>
+                            </div>
+                            <div id="coupon_result" style="padding: 33px;padding-top: 0px;font-size: 15px;font-weight: bold;"></div>
                         </div>
                     </div>
                 </div>
@@ -215,8 +237,39 @@ if(isset($_POST['submit'])){
                                 }
                             });
                         }
+			function set_coupon(){
+				var coupon_str=jQuery('#coupon').val();
+				if(coupon_str!=''){
+					jQuery('#coupon_result').html('');
+					jQuery.ajax({
+						url:'set_coupon.php',
+						type:'post',
+						data:'coupon_str='+coupon_str,
+						success:function(result){
+							var data=jQuery.parseJSON(result);
+							if(data.is_error=='yes'){
+								jQuery('#coupon_box').hide();
+								jQuery('#coupon_result').html(data.dd);
+								jQuery('#order_total_price').html(data.result);
+							}
+							if(data.is_error=='no'){
+								jQuery('#coupon_box').show();
+								jQuery('#coupon_price').html(data.dd);
+								jQuery('#order_total_price').html(data.result);
+							}
+						}
+					});
+				}else{
+                    jQuery('#coupon_result').html('Please Enter valid Coupon Code.')
+                }
+            }		
         </script>
 <?php
+if(isset($_SESSION['COUPON_ID'])){
+	unset($_SESSION['COUPON_ID']);
+	unset($_SESSION['COUPON_CODE']);
+	unset($_SESSION['COUPON_VALUE']);
+}
 require('footer.php');
 ?>
 
