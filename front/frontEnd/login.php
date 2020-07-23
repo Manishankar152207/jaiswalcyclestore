@@ -18,13 +18,15 @@ if(isset($_POST['submit'])){
     }else{
         $username=get_safe_value($conn,$_POST['Username']);
         $password=get_safe_value($conn,$_POST['Password']);
-        $res=mysqli_query($conn,"select * from admin_users where email='$username' and pass='$password'");
+        $res=mysqli_query($conn,"select * from admin_users where name='$username' and pass='$password'");
         $rec=mysqli_query($conn,"select * from test where email='$username' and pass='$password'");
         $row=mysqli_fetch_assoc($res);
         $data=mysqli_fetch_assoc($rec);
         if(mysqli_num_rows($res)){
             $_SESSION['Admin_Login']='yes';
+            $_SESSION['Admin_Status']=$row['status'];
             $_SESSION['Admin_Id']=$row['id'];
+            $_SESSION['Admin_Role']=$row['role'];
             $_SESSION['Admin_username']=$username;
             $_SESSION['Admin_password']=$password;
             mysqli_query($conn,"delete from login_log where ip_address='$ip_address'");
@@ -105,7 +107,7 @@ if(isset($_POST['Register'])){
                         <div class="menumenu__container clearfix">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5"> 
                                 <div class="logo">
-                                     <a href="index.html"><h3><b>Jaiswal Cycle Store</b></h3></a>
+                                     <a href="../shopfront/index.php"><h3><b>Jaiswal Cycle Store</b></h3></a>
                                 </div>
                             </div>
                             

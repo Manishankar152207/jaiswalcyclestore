@@ -1,5 +1,6 @@
 <?php
 require('top.inc.php');
+isAdmin();
 $msg='';
 $coupon_code='';
 $coupon_type='';

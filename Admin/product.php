@@ -1,5 +1,11 @@
 <?php
 require('top.inc.php');
+$isVendor='';
+$isVendor1='';
+if($_SESSION['Admin_Role']==1){
+   $isVendor=" and product.added_by='".$_SESSION['Admin_Id']."'";
+   $isVendor1=" and added_by='".$_SESSION['Admin_Id']."'";
+}
 if(isset($_GET['type'])&& $_GET['type']!=''){
     $type=get_safe_value($conn,$_GET['type']);
     if($type=='status'){
@@ -10,15 +16,15 @@ if(isset($_GET['type'])&& $_GET['type']!=''){
        }else{
          $status=0;
        }
-      mysqli_query($conn,"update product set status='$status' where id='$id'");
+      mysqli_query($conn,"update product set status='$status' where id='$id' $isVendor1");
     }
     if($type=='delete'){
       $id=get_safe_value($conn,$_GET['id']);
-      mysqli_query($conn,"delete from product where id='$id'");
+      mysqli_query($conn,"delete from product where id='$id' $isVendor1");
    }
 }
 $sql="select product.*,categories.categories from product,categories 
-where product.categories_id=categories.id order by product.id desc";
+where product.categories_id=categories.id $isVendor order by product.id desc";
 $rec=mysqli_query($conn,$sql);
 ?>
 <div class="content pb-0">

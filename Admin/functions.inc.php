@@ -12,6 +12,9 @@ function prx($arr){
 function get_safe_value($conn,$str){
     if($str!=''){
         $str=trim($str);
+        $str=strip_tags($str);
+        $str = stripslashes($str);
+        $str = htmlspecialchars($str);
         return mysqli_real_escape_string($conn,$str);
     }
 }
@@ -21,6 +24,15 @@ function getsoldproductbyproductid($conn,$pid){
     $res=mysqli_query($conn,$sql);
     $row=mysqli_fetch_assoc($res);
     return $row['qty'];
+}
+function isAdmin(){
+    if($_SESSION['Admin_Role']==1){
+        header('location:product.php');
+        die();
+        /*<script>
+        window.location.href="product.php";
+        </script>*/
+    }
 }
 
 ?>

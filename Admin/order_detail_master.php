@@ -1,5 +1,6 @@
 <?php
 require('top.inc.php');
+isAdmin();
 $order_id=get_safe_value($conn,$_GET['id']);
 if($order_id>0){
 

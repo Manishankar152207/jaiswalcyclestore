@@ -11,6 +11,9 @@ function prx($arr){
 function get_safe_value($conn,$str){
     if($str!=''){
         $str=trim($str);
+        $str=strip_tags($str);
+        $str = stripslashes($str);
+        $str = htmlspecialchars($str);
         return mysqli_real_escape_string($conn,$str);
     }
 }

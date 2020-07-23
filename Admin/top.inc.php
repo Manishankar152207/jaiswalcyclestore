@@ -31,14 +31,20 @@ if(!isset($_SESSION['Admin_Login']) && !isset($_SESSION['Admin_username']) && !i
                <ul class="nav navbar-nav">
                   <li class="menu-title">Menu</li>
                   <li class="menu-item-has-children dropdown">
-                     <a href="dashboard.php" >Categories Master</a>
-                  </li>
-                  <li class="menu-item-has-children dropdown">
                      <a href="product.php" >Product Master</a>
                   </li>
 				     <li class="menu-item-has-children dropdown">
-                     <a href="order_master.php" >Order Master</a>
+                 <?php if($_SESSION['Admin_Role']==1){
+                    echo '<a href="order_master_vendor.php" >Order Master</a>';
+                 }else{
+                    echo '<a href="order_master.php" >Order Master</a>';
+                 } ?>
                   </li>
+                  <?php if($_SESSION['Admin_Role']!=1){ ?>
+                     <li class="menu-item-has-children dropdown">
+                     <a href="dashboard.php" >Categories Master</a>
+                  </li>
+                  
                   <li class="menu-item-has-children dropdown">
                      <a href="coupon_master.php" >Coupon Master</a>
                   </li>
@@ -46,8 +52,13 @@ if(!isset($_SESSION['Admin_Login']) && !isset($_SESSION['Admin_username']) && !i
                      <a href="users.php" >User Master</a>
                   </li>
                   <li class="menu-item-has-children dropdown">
+                     <a href="vendor_management.php" >Vendor Management</a>
+                  </li>
+                  <li class="menu-item-has-children dropdown">
                      <a href="contact_us.php" >Contact Us</a>
                   </li>
+                  <?php } ?>
+                  
                </ul>
             </div>
          </nav>
@@ -64,7 +75,7 @@ if(!isset($_SESSION['Admin_Login']) && !isset($_SESSION['Admin_username']) && !i
             <div class="top-right">
                <div class="header-menu">
                   <div class="user-area dropdown float-right">
-                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome Admin</a>
+                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome <?php echo $_SESSION['Admin_username'];?></a>
                      <div class="user-menu dropdown-menu">
                         <a class="nav-link" href="Logout.php"><i class="fa fa-power-off"></i>Logout</a>
                      </div>

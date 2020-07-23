@@ -1,5 +1,6 @@
 <?php
 require('top.inc.php');
+isAdmin();
 ?>
 <div class="content pb-0">
    <div class="orders">

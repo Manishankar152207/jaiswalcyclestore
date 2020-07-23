@@ -1,5 +1,11 @@
 <?php
 require('top.inc.php');
+$isVendor='';
+$isVendor1='';
+if($_SESSION['Admin_Role']==1){
+   $isVendor=" and product.added_by='".$_SESSION['Admin_Id']."'";
+   $isVendor1=" and added_by='".$_SESSION['Admin_Id']."'";
+}
 $categories='';
 $msg='';
 $categories_id='';
@@ -18,7 +24,7 @@ $image_required='required';
 if(isset($_GET['id']) && $_GET['id']!=''){
     $image_required='';
     $id=get_safe_value($conn,$_GET['id']);
-    $res=mysqli_query($conn,"select * from product where id='$id'");
+    $res=mysqli_query($conn,"select * from product where id='$id' $isVendor1");
     $check=mysqli_num_rows($res);
     if($check>0){
         $row=mysqli_fetch_assoc($res);
@@ -76,18 +82,18 @@ if(isset($_POST['submit'])){
                move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
                $update_sql="update product set categories_id='$categories_id',name='$name',mrp='$mrp',
                price='$price',qty='$qty',best_seller='$best_seller',short_desc='$short_desc',description='$description',meta_title='$meta_title',
-               meta_desc='$meta_desc',meta_keyword='$meta_keyword',status='1',image='$image' where id='$id'";
+               meta_desc='$meta_desc',meta_keyword='$meta_keyword',status='1',image='$image',added_by='".$_SESSION['Admin_Id']."' where id='$id'";
          }else{
             $update_sql="update product set categories_id='$categories_id',name='$name',mrp='$mrp',
             price='$price',qty='$qty',best_seller='$best_seller',short_desc='$short_desc',description='$description',meta_title='$meta_title',
-            meta_desc='$meta_desc',meta_keyword='$meta_keyword',status='1' where id='$id'";
+            meta_desc='$meta_desc',meta_keyword='$meta_keyword',status='1',added_by='".$_SESSION['Admin_Id']."' where id='$id'";
            }
             mysqli_query($conn,$update_sql);
         }else{
             $image=rand(11111111,99999999).'_'.$_FILES['image']['name'];
             move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
-            mysqli_query($conn,"insert into product(categories_id,name,mrp,price,qty,image,best_seller,short_desc,description,meta_title,meta_desc,meta_keyword,status) 
-            values('$categories_id','$name','$mrp','$price','$qty','$image','$best_seller','$short_desc','$description','$meta_title','$meta_desc','$meta_keyword','1')");
+            mysqli_query($conn,"insert into product(categories_id,name,mrp,price,qty,image,best_seller,short_desc,description,meta_title,meta_desc,meta_keyword,added_by,status) 
+            values('$categories_id','$name','$mrp','$price','$qty','$image','$best_seller','$short_desc','$description','$meta_title','$meta_desc','$meta_keyword','".$_SESSION['Admin_Id']."','1')");
          }
          header('location:product.php');
          die();
@@ -172,15 +178,15 @@ if(isset($_POST['submit'])){
                             </div>
                             <div class="form-group">
                                <label for="meta_title" class=" form-control-label">Meta Title</label><textarea
-                               class="form-control" name="meta_title" placeholder="Enter Meta Title" required><?php echo $meta_title;?></textarea>
+                               class="form-control" name="meta_title" placeholder="Enter Meta Title"><?php echo $meta_title;?></textarea>
                             </div>
                             <div class="form-group">
                                <label for="meta_desc" class=" form-control-label">Meta Description</label><textarea
-                               class="form-control" name="meta_desc" placeholder="Enter Meta Description" required><?php echo $meta_desc;?></textarea>
+                               class="form-control" name="meta_desc" placeholder="Enter Meta Description" ><?php echo $meta_desc;?></textarea>
                             </div>
                             <div class="form-group">
                                <label for="meta_keyword" class=" form-control-label">Meta Keyword</label><textarea
-                               class="form-control" name="meta_keyword" placeholder="Enter Meta Keyword" required><?php echo $meta_keyword;?></textarea>
+                               class="form-control" name="meta_keyword" placeholder="Enter Meta Keyword" ><?php echo $meta_keyword;?></textarea>
                             </div>
                             
                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block" name="submit">

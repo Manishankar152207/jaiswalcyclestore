@@ -1,6 +1,9 @@
 <?php
 require('connection.inc.php');
 require('functions.inc.php');
+$row=mysqli_fetch_assoc(mysqli_query($conn,"select * from like_dislike where id=1"));
+$like=$row['like_count'];
+$dislike=$row['dislike_count'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,16 +60,16 @@ require('functions.inc.php');
                 <p>Bike's Tyres and Tubes are also available.</p>
                 <div class="flex justify-center">
                     <button
-                        class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Like</button>
+                        class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onclick="update_Count('like',1)">Like(<span id="like"><?php echo $like;?></span>)</button>
                     <button
-                        class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Dislike
+                        class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg" onclick="update_Count('dislike',0)">Dislike(<span id="dislike"><?php echo $dislike;?></span>)
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!--<script>
+    <script>
         function update_Count(value,id){
             jQuery.ajax({
                 url:'Counter.php',
@@ -80,5 +83,5 @@ require('functions.inc.php');
             });
         }
 
-    </script>-->
+    </script>
     <hr>

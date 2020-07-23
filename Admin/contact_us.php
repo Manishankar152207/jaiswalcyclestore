@@ -1,5 +1,6 @@
 <?php
 require('top.inc.php');
+isAdmin();
 if(isset($_GET['type'])&& $_GET['type']!=''){
     $type=get_safe_value($conn,$_GET['type']);
     if($type=='delete'){

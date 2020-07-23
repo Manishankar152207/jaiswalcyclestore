@@ -15,16 +15,20 @@ if($qty>$productqty_pending){
     die();
 }
 
+if($qty<1){
 
-$obj=new add_to_cart();
-if($type=='add'){
+}else{
+    $obj=new add_to_cart();
+    if($type=='add'){
     $obj->addProduct($pid,$qty);
 }
-if($type=='update'){
+    if($type=='update'){
     $obj->updateProduct($pid,$qty);
 }
-if($type=='remove'){
+    if($type=='remove'){
     $obj->removeProduct($pid);
 }
+}
+
 echo $obj->totalProduct();
 ?>
