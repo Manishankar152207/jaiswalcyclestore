@@ -39,7 +39,7 @@ if($_GET['id']!=''){
 }
 ?>
 <div class="htc__select__option"
-    style="width:20%;height:40px;float:left;background-color:white;margin-top:4px;margin-left:4px;border:2px solid gainsboro;border-radius:15px;box-shadow: 1px 2px 10px 5px white;color:blue;">
+    style="width:40%;height:40px;float:left;background-color:white;margin-top:4px;margin-left:4%;border:2px solid gainsboro;border-radius:15px;box-shadow: 1px 2px 10px 5px white;color:blue;">
     <select class="ht__select" onchange="sorting('<?php echo $id ?>')" id="product_sort">
         <option value=''>Sort by..</option>
         <option <?php echo $high_low_selected;?> value="high_low">High to low</option>
@@ -52,7 +52,7 @@ if($_GET['id']!=''){
     <div class="body__overlay"></div>
     <div id="myDropdown" class="dropdown-content">
         <input type="text" placeholder="   Search your product here.." id="myInput" name="str"
-            style="width:35%;height:40px;float:right;background-color:white;margin-top:4px;margin-right:4px;border:2px solid gainsboro;border-radius:15px;box-shadow: 1px 2px 10px 5px white;color:blue;">
+            style="width:45%;height:40px;float:right;background-color:white;margin-top:4px;margin-right:4%;border:2px solid gainsboro;border-radius:15px;box-shadow: 1px 2px 10px 5px white;color:blue;">
     </div>
 </form>
 

@@ -21,7 +21,7 @@ $dislike=$row['dislike_count'];
     <header class="text-gray-700 body-font" style="background-color: gainsboro;position: sticky;top:4px;z-index: 100">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
-                <a class="mr-5 hover:text-gray-900" href="index.html">Home</a>
+                <a class="mr-5 hover:text-gray-900" href="index.php">Home</a>
                 <a class="mr-5 hover:text-gray-900" href="#products">Services and Products</a>
                 <a class="mr-5 hover:text-gray-900" href="aboutUs.php">About Us</a>
                 <a class="mr-5 hover:text-gray-900" href="mailto:manishjaiswal152207@gmail.com">Mail Us</a>

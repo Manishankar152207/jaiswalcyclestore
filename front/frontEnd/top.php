@@ -37,13 +37,11 @@ if($mypage=="product_detail.php"){
     <meta name="description" content="<?php echo $meta_desc;?>">
     <meta name="keyword" content="<?php echo $meta_keyword;?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <link rel="stylesheet" href="mystyle.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/core.css">
     <link rel="stylesheet" href="css/shortcode/shortcodes.css">

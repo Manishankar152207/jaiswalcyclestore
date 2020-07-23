@@ -87,70 +87,70 @@
             </div>
             <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
                 <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">About us</h2>
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3" style="font-weight:bold;">About us</h2>
                     <nav class="list-none mb-10">
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Owner:Sasi Kala Kumari</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Owner:Sasi Kala Kumari</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Propriter:Mohan Pd. Jaiswal</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Propriter:Mohan Pd. Jaiswal</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Phone:+9779807253226</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Phone:+9779807253226</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Kolhabi,main Road</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Kolhabi,main Road</a>
                         </li>
                     </nav>
                 </div>
                 <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Bew bicycle For</h2>
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3" style="font-weight:bold;">Buy bicycle For</h2>
                     <nav class="list-none mb-10">
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Gents</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Gents</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Ladies</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Ladies</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Kids</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Kids</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Small Baby</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Small Baby</a>
                         </li>
                     </nav>
                 </div>
                 <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Bicycle Parts</h2>
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3" style="font-weight:bold;">Bicycle Parts</h2>
                     <nav class="list-none mb-10">
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Second-Hand Bicycle</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Second-Hand Bicycle</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Tyres</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Tyres</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Tubes</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Tubes</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Others Parts</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Others Parts</a>
                         </li>
                     </nav>
                 </div>
                 <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Bikes Parts</h2>
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3" style="font-weight:bold;">Bikes Parts</h2>
                     <nav class="list-none mb-10">
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Tyres(All size)</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Tyres(All size)</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Tube(All size)</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Tube(All size)</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Ball and Bearing</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Ball and Bearing</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 hover:text-gray-800">Others Parts</a>
+                            <a class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Others Parts</a>
                         </li>
                     </nav>
                 </div>
