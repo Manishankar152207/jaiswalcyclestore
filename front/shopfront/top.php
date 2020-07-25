@@ -58,18 +58,18 @@ $dislike=$row['dislike_count'];
                 <p>Jaiswal Cycle Store is the place where Bicycle are repaired and customer can buy new Bicycle. </p>
                 <p>All parts of Bicycle are Available with handsome price.</p>
                 <p>Bike's Tyres and Tubes are also available.</p>
-                <div class="flex justify-center">
+                <!-- <div class="flex justify-center">
                     <button
                         class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onclick="update_Count('like',1)">Like(<span id="like"><?php echo $like;?></span>)</button>
                     <button
                         class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg" onclick="update_Count('dislike',0)">Dislike(<span id="dislike"><?php echo $dislike;?></span>)
                     </button>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
 
-    <script>
+    <!-- <script>
         function update_Count(value,id){
             jQuery.ajax({
                 url:'Counter.php',
@@ -83,5 +83,5 @@ $dislike=$row['dislike_count'];
             });
         }
 
-    </script>
+    </script> -->
     <hr>

@@ -5,6 +5,13 @@ if(!isset($_SESSION['User_Login']) && $_SESSION['User_Login']!='yes'){
         window.location.href='login.php';
     </script><?php
 }
+if(isset($_GET['id']) && isset($_GET['order_id'])){
+if($_GET['id']!='' && $_GET['order_id']!='' && $_GET['id']>0 && $_GET['order_id']>0 ){
+    $id=get_safe_value($conn,$_GET['id']);
+    $order_id=get_safe_value($conn,$_GET['order_id']);
+    mysqli_query($conn,"delete from product_order where id='$order_id' and user_id='$id'");
+}
+}
 ?>
 <!-- wishlist-area start -->
 <div class="wishlist-area ptb--100 bg__white">
@@ -37,7 +44,9 @@ if(!isset($_SESSION['User_Login']) && $_SESSION['User_Login']!='yes'){
                                                 <?php echo $row['pincode'];?><br></td>
                                                 <td class="product-name"><a href="#"><?php echo $row['payment_type'];?></a></td>
                                                 <td class="product-price"><span class="amount"><?php echo $row['payment_status'];?></span></td>
-                                                <td class="product-stock-status"><span class="wishlist-in-stock"><?php echo $row['status'];?></span></td>
+                                                <td class="product-stock-status"><span class="wishlist-in-stock"><?php echo $row['status'];?></span><br/><br>
+                                                <a href="?id=<?php echo $User_id;?>&order_id=<?php echo $row['id'];?>">Cancel</a>
+                                                </td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>

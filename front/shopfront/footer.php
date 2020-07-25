@@ -5,7 +5,7 @@
             <form method="POST" id="frmContact">
                 <div class="form_item">
                     <label for="Name">Name:</label>
-                    <input type="text" name="name" id="name" placeholder="Please Enter your name!" value="" required>
+                    <input type="text" name="name" id="name" placeholder="Please Enter your name!" value="" autocomplet="off" required >
                     <span class="error" style="color: #FF0000;">*</span>
                 </div>
                 <div class="form_item">

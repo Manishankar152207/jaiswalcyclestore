@@ -14,11 +14,26 @@ if($type=='email'){
 	$otp=rand(1111,9999);
 	$_SESSION['EMAIL_OTP']=$otp;
 	
-	$to_email = $email;
-    $subject = "Email Verification";
-    $body ="$otp is your otp";
-    $headers = "From: manishjaiswal152207@gmail.com";
-	if(mail($to_email, $subject, $body, $headers)){
+	include('smtp/PHPMailerAutoload.php');
+	$mail=new PHPMailer(true);
+	$mail->isSMTP();
+	$mail->Host="smtp.gmail.com";
+	$mail->Port=587;
+	$mail->SMTPSecure="tls";
+	$mail->SMTPAuth=true;
+	$mail->Username="indaljaiswal152207@gmail.com";
+	$mail->Password="manish152207";
+	$mail->SetFrom("indaljaiswal152207@gmail.com");
+	$mail->addAddress($email);
+	$mail->IsHTML(true);
+	$mail->Subject="Email Verification";
+	$mail->Body="$otp is your otp.Don't share this to anyone. Jaiswal cycle store don't ask for your OTP.So be Careful.";
+	$mail->SMTPOptions=array('ssl'=>array(
+		'verify_peer'=>false,
+		'verify_peer_name'=>false,
+		'allow_self_signed'=>false
+	));
+	if($mail->send()){
 		echo "done";
 	}else{
 		//echo "Error occur";

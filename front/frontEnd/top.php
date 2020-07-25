@@ -85,15 +85,14 @@ if($mypage=="product_detail.php"){
                                                 <li><a href="categorie.php?id=<?php echo $list['id']; ?>"><?php echo $list['categories']?></a></li>
                                           <?php  }                                           
                                            ?>
+                                           
                                             <li><a href="../shopfront/index.php#contact">contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>  
-                            </div>
-                            <div class="col-md-7 col-lg-2 col-sm-4 col-xs-4">
-                            </div>
+                                            </div>
                             
-                            <div class="col-md-7 col-lg-2 col-sm-4 col-xs-4">
+                            <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
                                 <div class="header__right">
                                     
                                     <div class="header__account">
@@ -128,6 +127,6 @@ if($mypage=="product_detail.php"){
                 </div>
             </div>
         </header>
-       
-        
-        
+        </div>
+   
+    

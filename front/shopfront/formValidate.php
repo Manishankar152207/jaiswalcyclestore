@@ -17,15 +17,33 @@ if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['phone']) 
       $nameErr = "Invalid phone Number.";*/
 
    $date=date('Y-m-d h:i:s');
-    $message=get_safe_value($conn,$_POST['message']);
-
-    mysqli_query($conn,"insert into form(name,email,phone,message,date_time) values('$name','$email','$phone','$message','$date')");  
-    $to_email = "manishjaiswal152207@gmail.com";
-    $subject = "New Contact Us";
-    $body ="Name=".$name." E-mail=".$email." Phone=".$phone." Message=".$message;
-    $headers = "From: manishjaiswal152207@gmail.com";
-    mail($to_email, $subject, $body, $headers);
+   $message=get_safe_value($conn,$_POST['message']);
+  include('../frontEnd/smtp/PHPMailerAutoload.php');
+	$mail=new PHPMailer(true);
+	$mail->isSMTP();
+	$mail->Host="smtp.gmail.com";
+	$mail->Port=587;
+	$mail->SMTPSecure="tls";
+	$mail->SMTPAuth=true;
+	$mail->Username="indaljaiswal152207@gmail.com";
+	$mail->Password="manish152207";
+	$mail->SetFrom("indaljaiswal152207@gmail.com");
+	$mail->addAddress($email);
+	$mail->IsHTML(true);
+	$mail->Subject="New Contact Us";
+	$mail->Body="Name=".$name."<br>E-mail=".$email."<br>Phone=".$phone."<br>Message=".$message;
+	$mail->SMTPOptions=array('ssl'=>array(
+		'verify_peer'=>false,
+		'verify_peer_name'=>false,
+		'allow_self_signed'=>false
+	));
+	if($mail->send()){
     echo "yes";
+    die();
+	}else{
+		//echo "Error occur";
+  }
+  mysqli_query($conn,"insert into form(name,email,phone,message,date_time) values('$name','$email','$phone','$message','$date')");
   }
 ?>
   
